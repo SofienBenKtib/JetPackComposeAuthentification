@@ -8,8 +8,10 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
@@ -58,14 +60,14 @@ fun HeadingTextComponent(value: String) {
 @Composable
 fun MyTextField(labelValue:String) {
 
-    val textValue = remember {
+    var textValue by rememberSaveable {
         mutableStateOf("")
     }
 
     //TODO fix the code below
     OutlinedTextField(
         value = textValue,
-        label =  Text("test"),
+        label = { labelValue },
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = colorResource(id = R.color.colorPrimary),
             focusedLabelColor = colorResource(id = R.color.colorPrimary),
@@ -73,7 +75,7 @@ fun MyTextField(labelValue:String) {
         ),
         keyboardOptions = KeyboardOptions.Default,
         onValueChange = {
-            textValue.value=it
+            textValue=it
         }
     )
 }

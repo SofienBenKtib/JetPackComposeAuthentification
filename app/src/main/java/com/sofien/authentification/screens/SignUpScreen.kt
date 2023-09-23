@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.sofien.authentification.R
 import com.sofien.authentification.components.NormalTextComponent
 import com.sofien.authentification.components.HeadingTextComponent
+import com.sofien.authentification.components.MyTextField
 
 @Composable
 fun SignUpScreen() {
@@ -27,6 +28,8 @@ fun SignUpScreen() {
         Column (modifier = Modifier.fillMaxSize()) {
             NormalTextComponent(value = stringResource(id = R.string.hello))
             HeadingTextComponent(value= stringResource(id = R.string.create_account))
+            MyTextField("Full name")
+            MyTextField("Email")
         }
     }
 }
